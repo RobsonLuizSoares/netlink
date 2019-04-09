@@ -1,9 +1,10 @@
 {
   "name": "planilha",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "dev": "node ./bin/www",
+    "start": "node src/index.js"
   },
   "dependencies": {
     "connect-redis": "^3.4.0",
