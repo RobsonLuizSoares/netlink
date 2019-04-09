@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html>
+	
+	<%- include('inc/head') -%>
+	<body>
+		
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+
+	
+	<!-- <nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+	
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo">
+						<a href="/">Net Link
+							<em>!</em>
+						</a>
+					</div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+						<li>
+							<a href="menu.html">Menu</a>
+						</li>
+						<li>
+							<a href="services.html">Serviços</a>
+						</li>
+						<li>
+							<a href="contact.html">Contato</a>
+						</li>
+						<li class="btn-cta">
+							<a href="reservation.html">
+								<span>Reserva</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+		</div>
+	</nav>
+	
+	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_bg_2.jpg)">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-0 text-center">
+	
+						<div class="row row-mt-5em">
+							<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+								<h1 class="cursive-font">Fechamento de Caixa</h1>	
+							</div>
+						</div>
+						
+					</div>
+				</div>
+		</div>
+	</header> -->
+	<%- include('inc/header-menu') -%>
+	
+	<div class="gtco-section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-12 animate-box">
+						<% if (typeof error === "string") {%>
+						<div class="alert alert-danger">
+							<%= error %>
+						</div>
+						<% } %>
+
+						<% if (typeof success === "string") {%>
+							<div class="alert alert-success">
+								<%= success %>
+							</div>
+							<% } %>
+							<h2 class="servicesH2">Xerox</h2>
+                    <form action="/caixas" method="POST">
+							<div class="row form-group">
+									<div class="col-md-6">	
+										<label for="inputEmail">Máquinas Próprias</label>
+										<input placeholder="R$ 00,00 - digite o valor total das cópias feitas em máquinas próprias"   type="text" id="inputCopyPro" name="copyPro" value="<%= body.copyPro %>" class="form-control">
+									</div>
+									<div class="col-md-6">
+										<label for="inputEmail">Máquinas Locadas</label>
+										<input placeholder="digite o valor total das cópias feitas em máquinas locadas" type="text" id="inputCopyLoc" name="copyLoc" value="<%= body.copyLoc %>" class="form-control">
+									
+									</div>	
+							</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Observações:</label>
+									<textarea class="form-control" id="obsCopy" name="obsCopy" value="<%= body.obsCopy %>"  rows="3"></textarea>
+								</div>
+								<h2 class="servicesH2" >Impressões</h2>
+								<div class="row form-group">
+									<div class="col-md-6">
+										<label for="inputEmail">Máquinas Próprias</label>
+										<input placeholder="digite o valor total das impressões feitas em máquinas próprias" type="text" id="inputImpPro" name="impPro" value="<%= body.impPro %>" class="form-control">
+									</div>
+								
+									<div class="col-md-6">
+										<label for="inputEmail">Máquinas Locadas</label>
+										<input placeholder="digite o valor total das impressões feitas em máquinas locadas" type="text" id="inputImpLoc" name="impLoc" value="<%= body.impLoc %>" class="form-control">
+									</div>
+								
+									<div class="col-md-6 ">
+										<label for="inputEmail">Color Jato</label>
+										<input placeholder="digite o valor total das cópias feitas na jato" type="text" id="inputColorJato" name="inputColorJato" value="<%= body.inputColorJato %>" class="form-control">
+									</div>
+							
+									<div class="col-md-6 ">
+										<label for="inputEmail">Color Laser</label>
+										<input placeholder="digite o valor total das cópias feitas na laser" type="text" id="inputColorLaser" name="inputColorLaser" value="<%= body.inputColorLaser %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+										<label for="exampleFormControlTextarea1">Observações:</label>
+										<textarea class="form-control" name="obsImp" value="<%= body.obsImp %>" id="obsImp"  rows="3"></textarea>
+								</div>
+		
+								<h2 class="servicesH2">Plotter</h2>
+		
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="inputEmail">Plotter</label>
+										<input placeholder="digite o valor total das impressões Plotter" type="text" id="inputPlot" name="plot" value="<%= body.plot %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Observações:</label>
+									<textarea class="form-control" name="obsPlot" value="<%= body.obsPlot %>" id="obsPlot" rows="3"></textarea>
+								</div>
+								
+								<h2 class="servicesH2">Produtos </h2>
+							
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="inputEmail">Produtos</label>
+										<input placeholder="digite o valor total da venda de produtos" type="text" id="inputProd" name="prod" value="<%= body.prod %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+										<label for="exampleFormControlTextarea1">Observações:</label>
+										<textarea class="form-control" name="obsProd" value="<%= body.obsProd %>" id="obsProd" rows="3"></textarea>
+								</div>
+		
+								<h2 class="servicesH2">Serviços</h2>
+		
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="inputEmail">Serviços</label>
+										<input placeholder="digite o valor total da venda de serviços" type="text" id="inputServ" name="serv" value="<%= body.serv %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Observações:</label>
+									<textarea class="form-control" id="obsServ" name="obsServ" value="<%= body.obsServ %>" rows="3"></textarea>
+								</div>
+		
+								<h2 class="servicesH2">Internet</h2>
+		
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="inputEmail">Internet</label>
+										<input placeholder="digite o valor total dos acessos à internet" type="text" id="inputNet" name="net" value="<%= body.net %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlTextarea1">Observações:</label>
+									<textarea class="form-control" id="obsNet" name="obsNet" value="<%= body.obsNet %>" rows="3"></textarea>
+								</div>
+		
+								<h2 class="servicesH2">Saídas de Caixa</h2>
+		
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="inputEmail">Saídas</label>
+										<input placeholder="digite o valor total das saídas de caixa"  type="text" id="inputSaida" name="saida" value="<%= body.saida %>" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+										<label for="exampleFormControlTextarea1">Observações:</label>
+										<textarea placeholder="Anote os valores das saídas de caixa" class="form-control" name="obsSaida" value="<%= body.obsSaida %>" id="obsExit" rows="3"></textarea>
+								</div>
+		
+								<h2 class="servicesH2">Lya</h2>
+		
+								<div class="row form-group">
+									<div class="col-md-4">
+										<label for="inputPeople">Loja</label>
+										<select id="inputLojas" name="lojas" class="form-control">
+											<option value=""> -- selecione -- </option>
+											<option <% if (body.lojas == 1) { %>selected <% } %> value="1">Unespar</option>
+											<option <% if (body.lojas == 2) { %>selected <% } %> value="2">Avenida</option>
+											<option <% if (body.lojas == 3) { %>selected <% } %> value="3">São Cristóvão</option>
+											<option <% if (body.lojas == 4) { %>selected <% } %> value="4">Cruz Machado</option>
+										</select>
+									</div>
+								
+									<div class="col-md-4">
+										<label for="inputDate">Data</label>
+										<input type="text" id="inputDate" name="date" value="<%= body.date %>" class="form-control">
+									</div>
+								
+									<div class="col-md-4">
+										<label for="inputTime">Hora</label>
+										<input type="text" id="inputTime" name="time" value="<%= body.time %>" class="form-control">
+									</div>
+								</div>
+							
+								<div class="row form-group ">
+									<div class="col-md-12 ">
+									
+											<button type="submit"  class="btn btn-lg btn-primary " value="Fechar Caixa"> Fechar Caixa </button>
+									
+									</div>	
+								</div>
+                        
+                    </form>
+				</div>
+				
+				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row row-pb-md">
+	
+				<div class="col-md-12 text-center">
+					<div class="gtco-widget">
+						<h3>Entrar em Contato</h3>
+						<ul class="gtco-quick-contact">
+							<li>
+								<a href="#">
+									<i class="icon-phone"></i> +1 234 567 890</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-mail2"></i> contato@hcode.com.br</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="icon-chat"></i> Chat</a>
+							</li>
+						</ul>
+					</div>
+					<div class="gtco-widget">
+						<h3>Redes Sociais</h3>
+						<ul class="gtco-social-icons">
+							<li>
+								<a href="https://twitter.com/hcodebr">
+									<i class="icon-twitter"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.facebook.com/hcodebr">
+									<i class="icon-facebook"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/company/grupo-hcode/">
+									<i class="icon-linkedin"></i>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/channel/UCjWENuSH2gX55-y7QSZiWxA">
+									<i class="icon-youtube"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+	
+				<div class="col-md-12 text-center copyright">
+					<p>
+						<small class="block">&copy; 2018 Hcode. Todos os Direitos Reservados.</small>
+						<small class="block">Desenvolvido por
+							<a href="https://www.hcode.com.br" target="_blank">Hcode.com.br</a>
+						</small>
+					</p>
+				</div>
+			</div>
+	
+		</div>
+	</footer> -->
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	
+	<script src="js/moment.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+

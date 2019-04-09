@@ -1,0 +1,449 @@
+<%- include('inc/header') -%>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Planilhas
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Planilhas</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content container-fluid">
+
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Lista</h3>
+            <a href="#" class="btn btn-xs pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i
+                class="fa fa-plus"></i>
+              Nova</a>
+          </div>
+          <div class="box-header" style="height:44px;">
+
+            <div class="box-tools">
+              <form action="">
+                <div class="form-group" style="width: 182px; float: left">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="date" name="start" class="form-control unstyled" value="<%= date.start %>">
+                  </div>
+                </div>
+                <div class="form-group" style="width: 182px; float: left">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      até
+                    </div>
+                    <input type="date" name="end" class="form-control unstyled" value="<%= date.end %>">
+                  </div>
+                </div>
+                <div class="form-group" style="float: left; margin-left: 7px;">
+                  <button type="submit" class="btn btn-default">OK</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body no-padding">
+            <!-- Chart
+            <div style="padding:10px; display: flex; justify-content: center">
+              <canvas id="chart" style="max-height:100%; max-width: 780px;" ></canvas> 
+            </div> -->
+      
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Data</th>
+                  <th>Cópias Próprias</th>
+                  <th>Cópias Locadas</th>
+                  <!-- <th>Observações Cópias</th> -->
+                  <th>Impressões Próprias</th>
+                  <th>Impressões Locadas</th>
+                  <th>Jato Coloridas </th>
+                  <th>Laser Coloridas </th>
+                  <!-- <th>Observações Impressões</th> -->
+                  <th>Plotter</th>
+                 <!--  <th>Observações Plotter</th> -->
+                  <th>Produtos</th>
+                 <!--  <th>Observações Produtos</th> -->
+                  <th>Serviços</th>
+                  <!-- <th>Observações Serviços</th> -->
+                  <th>Internet</th>
+                 <!--  <th>Observações Internet</th> -->
+                  <th>Saídas</th>
+                  <!-- <th>Observações Saídas</th> -->
+                  <th>Loja</th>
+                  <th>Hora</th>
+                  
+                  <th style="min-width: 134px;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach(row => { %>
+                <tr data-row="<% JSON.stringify %>">
+                  <td><%= row.id %></td>
+                  <td><%= moment(row.date).format("DD [/] MM [/] YYYY") %></td>
+                  <td><%= row.copyPro %></td>
+                  <td><%= row.copyLoc %></td>
+                  <!--<td><%= row.obsCopy %></td> -->
+                  <td><%= row.impPro %></td>
+                  <td><%= row.impLoc %></td>
+                  <td><%= row.inputColorJato %></td>
+                  <td><%= row.inputColorLaser %></td>
+                  <!--<td><%= row.obsImp %></td> -->
+                  <td><%= row.plot %></td>
+                  <!--<td><%= row.obsPlot %></td> -->
+                  <td><%= row.prod %></td>
+                  <!--<td><%= row.obsProd %></td> -->
+                  <td><%= row.serv %></td>
+                  <!--<td><%= row.obsServ %></td> -->
+                  <td><%= row.net %></td>
+                 <!-- <td><%= row.obsNet %></td> -->
+                  <td><%= row.saida %></td>
+                 <!-- <td><%= row.obsSaida %></td> -->
+                  <td><%= row.lojas %></td>
+                  
+                  <td><%= row.time %></td>
+                  
+                  <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
+                        class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
+                        class="fa fa-trash"></i> Excluir</button></td>
+                </tr>
+              <% }) %>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer clearfix">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li class="active"><a href="#">«</a></li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div class="modal fade" id="modal-create">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00a65a;">
+          <form method="post">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Nova Planilha</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">	
+                <h2 class="servicesH2">Cópias</h2>
+                  <label for="inputNameCreate">Máquinas Próprias</label>
+                  <input placeholder="digite o valor total das cópias feitas em máquinas próprias" type="text" id="inputNameCreate" name="copyPro" class="form-control">
+              </div>	
+              <div class="form-group">
+                  <label for="inputEmail">Máquinas Locadas</label>
+                  <input placeholder="digite o valor total das cópias feitas em máquinas locadas" type="text" id="inputCopyLoc" name="copyLoc" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Observações:</label>
+                <textarea class="form-control" id="obsCopy" name="obsCopy"  rows="2"></textarea>
+              </div>
+              <h2 class="servicesH2" >Impressões</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Máquinas Próprias</label>
+                  <input placeholder="digite o valor total das impressões feitas em máquinas próprias" type="text" id="inputImpPro" name="impPro"class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="inputEmail">Máquinas Locadas</label>
+                  <input placeholder="digite o valor total das impressões feitas em máquinas locadas" type="text" id="inputImpLoc" name="impLoc"  class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Observações:</label>
+                  <textarea class="form-control" name="obsImp" id="obsImp"  rows="3"></textarea>
+              </div>
+              <h2 class="servicesH2">Plotter</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Plotter</label>
+                  <input placeholder="digite o valor total das impressões Plotter" type="text" id="inputPlot" name="plot"  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Observações:</label>
+                <textarea class="form-control" name="obsPlot"  id="obsPlot" rows="2"></textarea>
+              </div>
+              <h2 class="servicesH2">Produtos</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Produtos</label>
+                  <input placeholder="digite o valor total da venda de produtos" type="text" id="inputProd" name="prod"  class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Observações:</label>
+                  <textarea class="form-control" name="obsProd" id="obsProd" rows="3"></textarea>
+              </div>
+              <h2 class="servicesH2">Serviços</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Serviços</label>
+                  <input placeholder="digite o valor total da venda de serviços" type="text" id="inputServ" name="serv"  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Observações:</label>
+                <textarea class="form-control" id="obsServ" name="obsServ"  rows="2"></textarea>
+              </div>
+              <h2 class="servicesH2">Internet</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Internet</label>
+                  <input placeholder="digite o valor total dos acessos à internet" type="text" id="inputNet" name="net"  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Observações:</label>
+                <textarea class="form-control" id="obsNet" name="obsNet"  rows="2"></textarea>
+              </div>
+              <h2 class="servicesH2">Saídas de Caixa</h2>
+              <div class="form-group">
+                  <label for="inputEmail">Saídas</label>
+                  <input placeholder="digite o valor total das saídas de caixa" type="text" id="inputSaida" name="saida"  class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Observações:</label>
+                  <textarea placeholder="Anote os valores das saídas de caixa" class="form-control" name="obsSaida"  id="obsExit" rows="3"></textarea>
+              </div>  
+              <div class="form-group">
+                  <label for="inputPeople">Loja</label>
+                    <select id="inputLojas" name="lojas" class="form-control">
+                      <option value=""> -- selecione -- </option>
+                      <option value="1">Unespar</option>
+                      <option value="2">Avenida</option>
+                      <option  value="3">São Cristóvão</option>
+                      <option  value="4">Cruz Machado</option>
+                    </select>
+              </div>
+              <div class="form-group">
+                  <label for="inputDate">Data</label>
+                  <input type="date" id="inputDateCreate" name="date" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="inputTime">Hora</label>
+                  <input type="time" id="inputTimeCreate" name="time" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="modal-update">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00c0ef;">
+          <form method="post">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Editar Reserva</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputNameUpdate">Nome</label>
+                <input type="text" class="form-control" id="inputNameUpdate" name="name">
+              </div>
+              <div class="form-group">
+                <label for="inputEmailUpdate">E-mail</label>
+                <input type="email" class="form-control" id="inputEmailUpdate" name="email">
+              </div>
+              <div class="form-group">
+                <label for="inputPeopleUpdate">Pessoas</label>
+                <select id="inputPeopleUpdate" name="people" class="form-control">
+                  <option value=""> -- selecione -- </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="inputDateUpdate">Data</label>
+                <input type="date" id="inputDateUpdate" name="date" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="inputTimeUpdate">Hora</label>
+                <input type="time" id="inputTimeUpdate" name="time" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-info">Salvar</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <%- include('inc/footer') -%>
+    
+    <script src="/js/moment.min.js"> </script>
+    <script src="/admin/bower_components/chart.js/dist/Chart.min.js"> </script>
+    <script src="/js/pluginFormSave.js">  </script>
+    <script>
+
+        let formCreate = document.querySelector('#modal-create form')
+        
+        formCreate.save().then(json =>{
+
+          window.location.reload()
+        
+        }).catch(err => {
+          console.log(err)
+
+        })
+
+        let formUpdate = document.querySelector('#modal-update form');
+
+          formUpdate.save().then(json =>{
+
+             window.location.reload()
+
+              }).catch(err => {
+              console.log(err)
+
+        });
+    
+
+        let grafico = new Chart(document.querySelector('#chart').getContext('2d'), {
+          type: 'bar',
+          data: { },
+          option: {
+            tooltips: {
+              mode: 'index',
+              intersect: false
+            },
+            
+            scales: {
+              xAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'mês'
+                }
+              }]
+            }
+          }
+
+        })
+
+        
+        fetch(`/admin/caixas/chart${window.location.search}` )
+        .then(response => response.json())
+        .then(json => {
+          
+          const copP = json.values_copyP
+          const copL = json.values_copyL
+          const impP = json.values_impP
+          const impL = json.values_impL
+          const plot = json.values_plot
+          const prod = json.values_prod
+          const serv = json.values_serv
+          const inter = json.values_inter
+          const said = json.values_said
+
+          grafico.data = {
+                labels: json.months,
+                datasets: [{
+                  data:   copP,
+                  label: 'Cópias Próprias',
+                  borderWidth: 2,
+                  backgroundColor: '#7d5fff',
+                  borderColor: '#0a3d62'
+              },
+            {     data:  copL,
+                  label: 'Cópias Locadas',
+                  borderWidth: 2,
+                  backgroundColor: '#1e3799',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  impP,
+                  label: 'Impressões Próprias',
+                  borderWidth: 2,
+                  backgroundColor: '#eb2f06',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  impL,
+                  label: 'Impressões Locadas',
+                  borderWidth: 2,
+                  backgroundColor: '#78e08f',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  plot,
+                  label: 'Plotter',
+                  borderWidth: 2,
+                  backgroundColor: '#3c6382',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  prod,
+                  label: 'Produtos',
+                  borderWidth: 2,
+                  backgroundColor: '#f6b93b',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  serv,
+                  label: 'Serviços',
+                  borderWidth: 2,
+                  backgroundColor: '#f53b57',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  inter,
+                  label: 'Internet',
+                  borderWidth: 2,
+                  backgroundColor: '#4bcffa',
+                  borderColor: '#0a3d62'
+
+            },
+            {     data:  said,
+                  label: 'Saídas',
+                  borderWidth: 2,
+                  backgroundColor: '#dfe4ea',
+                  borderColor: '#0a3d62'
+
+            }]
+              
+
+            },
+            
+
+           grafico.update();
+          
+        })
+    </script>
+     
+     
+    
+    
+    
